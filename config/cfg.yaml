@@ -1,0 +1,81 @@
+training:
+  no_cuda: False
+
+models:
+  model_wrapper: Aasm
+  Arch:
+    vNet:
+      model_wrapper: vSubNet
+      pretrained:
+        model: IR_152
+#        weight: models/pretrained_weight/Backbone_IR_152_Epoch_112_Batch_2547328_Time_2019-07-13-02-59_checkpoint.pth
+      freeze: False
+      output_channel: 128
+      num_classes: 924
+    aNet:
+      model_wrapper: aSubNet
+      pretrained:
+        model: ResNetSE34
+#        weight: models/pretrained_weight/baseline_lite_ap.model
+      freeze: False
+      output_channel: 128
+      num_classes: 924
+    eqm:
+      model_wrapper: eqm
+      output_channel: 128
+      num_classes: 924
+
+  normal_layer: True
+  normal_mean:
+    - 127.5
+    - 127.5
+    - 127.5
+  normal_std:
+    - 127.5
+    - 127.5
+    - 127.5
+
+
+dataset:
+  dataset_train: vox1_train
+  dataset_val: vox1_val
+  dataset_test: vox1_test
+  eval_triplet_val: match_v2f_2_test
+  eval_triplet_test: match_v2f_2_test
+  image_data_dir: /home/user/Datasets/VGG_ALL_FRONTAL
+  audio_data_dir: /home/user/Datasets/voxceleb1/audio
+  list_dir: ./data/gen_list
+  resize:
+    - 112
+    - 112
+  input_size:
+    - 112
+    - 112
+
+evaluation:
+  dataset:
+    dataset_test: vox1_test
+    dataset_val: vox1_val
+    eval_lists:
+      - match_g_v2f_2_test
+      - match_g_f2v_2_test
+      - match_v2f_2_test
+      - match_f2v_2_test
+      - verify_g_v2f_test
+      - verify_g_f2v_test
+      - verify_v2f_test
+      - verify_f2v_test
+      - reterival_v2f_test
+      - reterival_f2v_test
+    image_data_dir: /home/user/Datasets/VGG_ALL_FRONTAL
+    audio_data_dir: /home/user/Datasets/voxceleb1/audio
+    list_dir: ./data/gen_list
+    resize:
+      - 112
+      - 112
+    input_size:
+      - 112
+      - 112
+  save_feat: ./save/features.pth
+  save_result: ./save/scores.txt
+  trained_model: ./save/checkpoint_best.pth.tar
