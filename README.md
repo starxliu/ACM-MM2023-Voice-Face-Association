@@ -48,7 +48,10 @@ tqdm==4.62.3
       - The test list contains three evaluation scenarios : matching, verification and retrieval.
 
       - Download [test list](https://www.dropbox.com/s/ht5g2hjzjs2q0hb/gen_list.zip?dl=0) or generate your own test list. You can also customize the path to the test list by modifying the `list_dir` key in the configuration file.
-   
+
+### Training
+
+Training strategies are coming soon.
 
 ### Evaluation on our trained model
 
