@@ -59,3 +59,11 @@ Training strategies are coming soon.
 python3 eval.py --cfg config/cfg.yaml
 ```
 
+Expected results(%):
+|             |     | 1:2 Matching(U) | 1:2Matching(G) | Verification(U) | Verification(G) | Retrieval |
+|-------------|-----|-----------------|----------------|-----------------|-----------------|-----------|
+| Vox-CM      | V2F | 87.87           | 78.90           | 88.42           | 79.17           | 6.77      |
+|             | F2V | 88.63           | 78.58          | 89.02           | 78.95           | 7.16      |
+| AVSpeech-CM | V2F | 80.29           | 68.78          | 80.69           | 68.63           | 11.80      |
+|             | F2V | 79.98           | 67.81          | 81.16           | 69.05           | 13.43     |
+
